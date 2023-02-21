@@ -1,7 +1,184 @@
-/*
-    home.css: This website contains selectors only used in home.css
+/* navbar */
+div.offcanvas-body{
+    background: rgb(29, 29, 29);
+    text-decoration: none;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+div.offcanvas-header{
+    background: rgb(29, 29, 29);
+    color:#ffff;
+}
+img{
+    width: 50px;
+}
+
+
+
+
+/*login*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 370px;
+margin-top: 120px;
+margin-bottom: -300px;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+div.form-group-login{
+margin-top: 20px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+}
+
+div.card-body{
+    margin-top: 20px;
+}
+
+
+/* home */
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+#circle {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ width: 150px;
+ height: 150px;	
+}
+
+.loader {
+ width: calc(100% - 0px);
+ height: calc(100% - 0px);
+ border: 8px solid #162534;
+ border-top: 8px solid #09f;
+ border-radius: 50%;
+ animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+100% {transform: rotate(360deg);}
+} 
+
+div.alert.alert-info{
+top:500px;
+}
+/* footer */
+footer.bg-dark.text-center.text-white{
+    margin-top:520px;
+}
+
+
+/* register */
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+div.row.centered-form{
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-end;
+    position: relative;
+    top: 200px;
+}
+
+div.col-xs-12.col-sm-8.col-md-4.col-sm-offset-2.col-md-offset-4{
+    width: 600px;
+    height: 500px;
+   margin-bottom: -280px;  
+}
