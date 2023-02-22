@@ -131,7 +131,12 @@ html,body{
     height: 100%;
 }
 
-
+h1{
+    position: relative;
+    top:100px;
+    color:#ffff;
+    font-weight: 700px;
+}
 
 #circle {
  position: absolute;

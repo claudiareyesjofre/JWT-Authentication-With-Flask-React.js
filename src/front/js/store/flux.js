@@ -1,4 +1,4 @@
-/* import jwt_decode from "jwt-decode"; */
+import jwtDecode from "jwt-decode"; 
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -31,23 +31,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			logout: () => {
-				sessionStorage.removeItem("token");
-				localStorage.removeItem("token");
+				 sessionStorage.removeItem("token");
 				console.log("login out");
-				setStore({
-				  pokemon: [],
-				  infoRegister: [],
-				  userInfo: {
-					nombre: "",
-					apellido: "",
-					email: "",
-					password: "",
-					telefono: "",
-					rut: "",
-				  },
-				  login: false,
-				  token: "",
-				});
+				setStore ({token:null});
 				window.location.href = "/";
 			  },
 			  login: (MAIL, PASS, rememberMe) => {
@@ -84,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					  }
 					  setStore({
-						userInfo: jwt_decode(result.token).sub,
+						userInfo: jwtDecode(result.token).sub,
 						login: true,
 						token: result.token,
 					  });
@@ -127,10 +113,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						  });
 						  if (user.email != null) {
 							if ( user.email)
-							  retorno = "/perfilcliente";
+							  retorno = "/";
 		
 							else
-							  retorno = "/login";
+							  retorno = "/";
 						  } 
 						} 
 					  });
@@ -150,10 +136,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.clear();
 					sessionStorage.clear();
 		
-					if (ruta != "/login") return "/login";
+					if (ruta != "/") return "/";
 				  }
 				} else {
-				  if (ruta != "/login") retorno = "/login";
+				  if (ruta != "/") retorno = "/";
 				}
 				return retorno;
 			  },

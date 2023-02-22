@@ -14,19 +14,20 @@ export const Signup = () => {
 		let name = evento.target[0].value;
 		let subname = evento.target[1].value;
 		let email = evento.target[2].value;
-		let pass = evento.target[3].value;
+		let password = evento.target[3].value;
 		let rpass = evento.target[4].value;
+		
 
-		if (pass != rpass) {
+		if (password != rpass) {
 			alert("Contraseñas deben ser iguales");
 		}
-		if (name == "" || subname == "" || email == "" || pass == "" || rpass == "") {
+		if (name == "" || subname == "" || email == "" || password == "" || rpass == "") {
 			alert("Debes completar los datos");
 		} else {
 			await actions.infoRegister(
 				JSON.stringify({
 					email: email,
-					password: email,
+					password: password,
 
 				})
 			);
@@ -35,8 +36,11 @@ export const Signup = () => {
 		}
 	};
 	return (
-
+    
 		<div className="container">
+			{token && token != "" && token != undefined ? (
+        "you are registed in with this token " + token
+      ) : (
 			<div className="row centered-form">
 				<div className="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
 					<div className="panel panel-default">
@@ -60,6 +64,7 @@ export const Signup = () => {
 					</div>
 				</div>
 			</div>
+			)}
 		</div>
 	)
 }

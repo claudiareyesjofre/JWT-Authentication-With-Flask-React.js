@@ -22,19 +22,21 @@ export const Login = () => {
 		  setErrorMessage(true);
 		}
 	  }
+	  alert("inicio de seccion");
+			navigate("/")
 	};
   
-	const llamada = async () => {
+	 const llamada = async () => {
   
 	  if (sessionStorage.getItem("token") || localStorage.getItem("token")) {
 	  
-		const ruta = await actions.tokenValidation("/login");
-		console.log("ruta", ruta);
+		const ruta = await actions.tokenValidation("/");
+		console.log("/", ruta);
 		if (typeof ruta === "string") {
-		  navigate("/perfilcliente");
+		  navigate("/");
 		}
 	  }
-	};
+	}; 
   
     return(
         <div className="container">

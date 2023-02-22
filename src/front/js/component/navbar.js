@@ -42,15 +42,9 @@ export const Navbar = () => {
 							 <ImProfile/>
 							</Link>
 						</li>
-					) : (
-						<li className="nav-item d-none d-sm-block">
-							{store.token ? (
-								 <Link to={store.userInfo.rol ? "/perfilprofe" : "/perfilcliente"}>
-									<ImHome/>
-								</Link>
-							) : null}
-						</li>
-					)}
+							) : (null)}
+						
+		
         </ul>
         
       </div>
