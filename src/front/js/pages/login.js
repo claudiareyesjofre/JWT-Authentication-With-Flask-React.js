@@ -1,33 +1,41 @@
-import React,{useContext} from "react";
+import React,{useContext, useEffect, useState} from "react";
 import { Navigate, useNavigate} from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
-	let Navigate = useNavigate();
-
-	
+	let navigate = useNavigate();
+	const [errorMessage, setErrorMessage] = useState(false);
+  
 	const login = async (evento) => {
-		evento.preventDefault();
-		let email = evento.target[0].value;
-		let password = evento.target[1].value;
-	  
-		if (email == "" || password == "") {
-		  alert("Debes completar los datos");
-		} else {     
-			await actions.login(
-				JSON.stringify({
-				email: email,
-				password: password,
-
-			}));
-		  
-		  alert("iniciado");
-			Navigate("/perfil")
+	  evento.preventDefault();
+	  let MAIL = evento.target[0].value;
+	  let PASS = evento.target[1].value;
+	  let rememberMe = evento.target[2].checked;
+  
+	  if (MAIL == "" || PASS == "") {
+		alert("Debes completar los datos");
+	  } else {
+		const success = await actions.login(MAIL, PASS, rememberMe);
+		if (!success) {
+		  setErrorMessage(true);
 		}
-	  };
-
+	  }
+	};
+  
+	const llamada = async () => {
+  
+	  if (sessionStorage.getItem("token") || localStorage.getItem("token")) {
+	  
+		const ruta = await actions.tokenValidation("/login");
+		console.log("ruta", ruta);
+		if (typeof ruta === "string") {
+		  navigate("/perfilcliente");
+		}
+	  }
+	};
+  
     return(
         <div className="container">
 	<div className="d-flex justify-content-center h-100">

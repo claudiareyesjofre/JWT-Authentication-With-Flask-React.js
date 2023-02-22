@@ -2,6 +2,7 @@ import React,{ useContext } from "react";
 import { Context } from "../store/appContext";
 import Logo from "../../img/logo.png"
 import { Link } from "react-router-dom";
+import { ImUser, ImProfile, ImHome, ImUserMinus } from "react-icons/im";
 
 
 export const Navbar = () => {
@@ -25,32 +26,33 @@ export const Navbar = () => {
         {!store.token ? (
 						<li className="nav-item d-none d-sm-block">
 							<Link to="/login">
-								<img className="img-icon2" src="" alt="Icono usuario" />
+								<ImUser/>
 							</Link>
 						</li>)
 
 						:
 						(<li className="nav-item d-none d-sm-block">
-							<button onClick={() => actions.logout()} className="botonlogout"><img className="img-icon3" src="" alt="Icono usuario" /> </button>
+							<button onClick={() => actions.logout()} className="botonlogout"> <ImUserMinus/> </button>
 						</li>
 						)}
-         {/*  <li className="nav-item">
-         { {!store.token?
-            <Link to="/login"> <a className="nav-link active" aria-current="page" >Login</a> </Link>
-            :
-            <button  onClick={()=> actions.Logout()} className="nav-link active" aria-current="page" >Logout</button> 
-          }
-          
-          </li>
-          <li className="nav-item">
-           <Link to="/signup"><a className="nav-link">Register</a></Link> 
-          </li>}
- */}
+         
+         {!store.token ? (
+						<li className="nav-item d-none d-sm-block">
+							<Link to="/signup">
+							 <ImProfile/>
+							</Link>
+						</li>
+					) : (
+						<li className="nav-item d-none d-sm-block">
+							{store.token ? (
+								 <Link to={store.userInfo.rol ? "/perfilprofe" : "/perfilcliente"}>
+									<ImHome/>
+								</Link>
+							) : null}
+						</li>
+					)}
         </ul>
-        <form className="d-flex mt-3" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-success" type="submit">Search</button>
-        </form>
+        
       </div>
     </div>
   </div>
