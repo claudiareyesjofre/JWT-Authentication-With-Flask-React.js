@@ -29,17 +29,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			logout: () => {
-				const token = sessionStorage.removeItem("token");
-				console.log("cierre de seccion")
-				setStore({token:null}); 
-			}, 
+				sessionStorage.removeItem("token");
+        		localStorage.removeItem("token");
+        		console.log("login out");
+        		setStore({
+          pokemon: [],
+          infoRegister: [],
+          userInfo: {
+            nombre: "",
+            apellido: "",
+            email: "",
+            password: "",
+            telefono: "",
+            rut: "",
+            rol: null,
+          },
+          login: false,
+          token: "",
+        });
+        window.location.href = "/";
+      },
 			login: (email, password) => {
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
 				myHeaders.append("Access-Control-Allow-Credentials", "*");
 		
 				fetch(
-				  "https://3001-claudiareye-jwtauthenti-g2ta03yqcxr.ws-us87.gitpod.io/login",
+				  "https://3001-claudiareye-jwtauthenti-2fdz2b3whkh.ws-us87.gitpod.io/login",
 				  {
 					method: "POST",
 					headers: myHeaders,
@@ -67,7 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  },
 			  infoRegister: async (user) => {
 				fetch(
-				  "https://3001-claudiareye-jwtauthenti-g2ta03yqcxr.ws-us87.gitpod.io/signup",
+				  "https://3001-claudiareye-jwtauthenti-2fdz2b3whkh.ws-us87.gitpod.io/signup",
 				  {
 					method: "POST",
 					headers: {
@@ -109,7 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  myHeaders.append("Authorization", `Bearer ${token}`);
 				  try {
 					await fetch(
-					  "https://3001-claudiareye-jwtauthenti-g2ta03yqcxr.ws-us87.gitpod.io/token",
+					  "https://3001-claudiareye-jwtauthenti-2fdz2b3whkh.ws-us87.gitpod.io/token",
 					  {
 						method: "POST",
 						headers: myHeaders,
@@ -127,8 +143,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							token: token,
 						  });
 						  if (user) {
-							if ( user.rol)
-							  retorno = "/perfilprofe";
+							if ( user)
+							  retorno = "/";
 							else
 							  retorno = "/perfilcliente";
 						  } else {

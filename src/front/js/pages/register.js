@@ -37,9 +37,6 @@ export const Signup = () => {
 	return (
 
 		<div className="container">
-			{token && token != "" && token != undefined ? (
-        "you are registed in with this token " + token
-      ) : (
 			<div className="row centered-form">
 				<div className="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
 					<div className="panel panel-default">
@@ -63,7 +60,6 @@ export const Signup = () => {
 					</div>
 				</div>
 			</div>
-			)}
 		</div>
 	)
 }

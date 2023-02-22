@@ -5,23 +5,26 @@ import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
-	let navigate = useNavigate();
+	let Navigate = useNavigate();
 
 	
 	const login = async (evento) => {
 		evento.preventDefault();
 		let email = evento.target[0].value;
-		let pass= evento.target[1].value;
+		let password = evento.target[1].value;
 	  
-		if (email == "" || pass == "") {
+		if (email == "" || password == "") {
 		  alert("Debes completar los datos");
 		} else {     
-			const success = await actions.login(email, password);
-		  if (!success) {
-			setErrorMessage(true);
-		  }
+			await actions.login(
+				JSON.stringify({
+				email: email,
+				password: password,
+
+			}));
+		  
 		  alert("iniciado");
-			navigate("/")
+			Navigate("/perfil")
 		}
 	  };
 
@@ -38,7 +41,7 @@ export const Login = () => {
 				</div>
 			</div>
 			<div className="card-body">
-				<form>
+				<form onSubmit={login}>
 					<div className="input-group form-group">
 						<div className="input-group-prepend">
 							<span className="input-group-text"><i className="fas fa-user"></i></span>
@@ -50,7 +53,7 @@ export const Login = () => {
 						<div className="input-group-prepend">
 							<span className="input-group-text"><i className="fas fa-key"></i></span>
 						</div>
-						<input type="password" className="form-control" placeholder="password"/>
+						<input type="password" name="password" className="form-control" placeholder="password"/>
 					</div>
 					<div className="row align-items-center remember">
 						<input type="checkbox"/>Remember Me

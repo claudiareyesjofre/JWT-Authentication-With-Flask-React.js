@@ -22,18 +22,30 @@ export const Navbar = () => {
       </div>
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li className="nav-item">
-          {!store.token?
+        {!store.token ? (
+						<li className="nav-item d-none d-sm-block">
+							<Link to="/login">
+								<img className="img-icon2" src="" alt="Icono usuario" />
+							</Link>
+						</li>)
+
+						:
+						(<li className="nav-item d-none d-sm-block">
+							<button onClick={() => actions.logout()} className="botonlogout"><img className="img-icon3" src="" alt="Icono usuario" /> </button>
+						</li>
+						)}
+         {/*  <li className="nav-item">
+         { {!store.token?
             <Link to="/login"> <a className="nav-link active" aria-current="page" >Login</a> </Link>
             :
             <button  onClick={()=> actions.Logout()} className="nav-link active" aria-current="page" >Logout</button> 
           }
-          }
+          
           </li>
           <li className="nav-item">
            <Link to="/signup"><a className="nav-link">Register</a></Link> 
-          </li>
-
+          </li>}
+ */}
         </ul>
         <form className="d-flex mt-3" role="search">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
