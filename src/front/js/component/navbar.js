@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../../img/logo.png"
 import { Link } from "react-router-dom";
 
+
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-dark bg-dark fixed-top">
@@ -21,7 +22,7 @@ export const Navbar = () => {
             <Link to="/login"> <a className="nav-link active" aria-current="page" >Login</a> </Link>
           </li>
           <li className="nav-item">
-           <Link to="/register"><a className="nav-link">Register</a></Link> 
+           <Link to="/signup"><a className="nav-link">Register</a></Link> 
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
