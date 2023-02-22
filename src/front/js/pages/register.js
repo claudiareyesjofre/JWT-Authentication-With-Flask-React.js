@@ -23,7 +23,7 @@ export const Signup = () => {
 		if (name == "" || subname == "" || email == "" || pass == "" || rpass == "") {
 			alert("Debes completar los datos");
 		} else {
-			await actions.getinfoRegister(
+			await actions.infoRegister(
 				JSON.stringify({
 					email: email,
 					password: email,

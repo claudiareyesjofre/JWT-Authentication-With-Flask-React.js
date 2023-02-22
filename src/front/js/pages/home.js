@@ -24,7 +24,7 @@ export const Home = () => {
 			</div>
 
 			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+				{store.token || "Loading message from the backend (make sure your python backend is running)..."}
 			</div>
 			
 		</div>
