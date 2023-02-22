@@ -115,6 +115,9 @@ align-items: center;
 div.card-body{
     margin-top: 20px;
 }
+div.card{
+    width:600px;
+}
 
 
 /* home */
@@ -181,4 +184,14 @@ div.col-xs-12.col-sm-8.col-md-4.col-sm-offset-2.col-md-offset-4{
     width: 600px;
     height: 500px;
    margin-bottom: -280px;  
+}
+
+form{
+    width: 450px;
+    position: relative;
+    left: 50px;
+}
+input.btn.btn-info.btn-block{
+    position:relative;
+    top:30px;
 }

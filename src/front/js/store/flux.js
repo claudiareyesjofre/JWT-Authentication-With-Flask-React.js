@@ -20,6 +20,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			logout: () => {
+				const token = sessionStorage.removeItem("token");
+				console.log("cierre de seccion")
+				setStore({token:null}); 
+			}, 
+			getinfoRegister: async (user) => {
+				fetch(
+				  "https://3001-claudiareye-jwtauthenti-vzrzuz8wup4.ws-us87.gitpod.io/signup",
+				  {
+					method: "POST",
+					headers: {
+					  "Content-Type": "application/json",
+					},
+					body: user,
+					redirect: "follow",
+				  }
+				)
+				  .then((response) => response.json())
+				  .then((data) => {
+					console.log("data", data);
+					sessionStorage.setItem("token", data.token);
+					if (data.status == 200) {
+					  setStore({
+						userInfo: jwt_decode(data.token).sub,
+						login: true,
+						token: data.token,
+					  });
+					} else if (data.status == 400) {
+					  alert(data.msg);
+					}
+		
+					//recibo tokene y debo guardarlo en store, luego desencriptarlo
+				  })
+				  .catch((error) => console.log("error", error));
+			  },
 
 			getMessage: async () => {
 				try{
